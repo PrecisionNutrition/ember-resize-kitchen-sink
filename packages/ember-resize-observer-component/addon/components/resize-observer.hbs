@@ -1,0 +1,7 @@
+{{#if @noWrapper}}
+  {{yield this.API}}
+{{else}}
+  <div ...attributes {{on-resize this.onResize}}>
+    {{yield this.API}}
+  </div>
+{{/if}}
