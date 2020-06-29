@@ -1,10 +1,10 @@
 # ResizeObserverService
 
-`ResizeObserverService` allows to use a single [`ResizeObserver`] instance for observing multiple elements to achieve better performance.
+`ResizeObserverService` allows to use a single [`ResizeObserver`][resize-observer] instance for observing multiple elements to achieve better performance.
 
-**Why?** Using multiple [`ResizeObserver`] instances can result in a [noticeable performance penalty](https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/z6ienONUb5A/F5-VcUZtBAAJ).
+**Why?** Using multiple [`ResizeObserver`][resize-observer] instances can result in a [noticeable performance penalty][performance-penalty].
 
-This service can be used to create any tools that can benefit from using a single centralized [`ResizeObserver`]. For example, you can create a modifier for handling Element's size changes: [`<div {{on-resize @onResize}} />`](https://github.com/PrecisionNutrition/ember-on-resize-modifier) (the full example in the usage section).
+This service can be used to create any tools that can benefit from using a single centralized [`ResizeObserver`][resize-observer]. For example, you can create a modifier for handling Element's size changes: [`<div {{on-resize @onResize}} />`][on-resize-modifier] (the full example in the usage section).
 
 It has good test coverage and is ready for production👍
 
@@ -14,13 +14,19 @@ It has good test coverage and is ready for production👍
 ember install ember-resize-observer-service
 ```
 
+You might also need a [polyfill][polyfill] for [`ResizeObserver`][resize-observer] ([caniuse.com](https://caniuse.com/#feat=resizeobserver)):
+
+```
+ember install ember-resize-observer-polyfill
+```
+
 ## Usage
 
 ### Service API
 
 #### `isEnabled`
 
-It is `true` if [`ResizeObserver`] is available, otherwise the service will ignore any method calls (e.g. in `FastBoot` environment).
+It is `true` if [`ResizeObserver`][resize-observer] is available, otherwise the service will ignore any method calls (e.g. in `FastBoot` environment).
 
 #### `observe(element, callback)`
 
@@ -29,7 +35,7 @@ Initiates the observing of the provided `element` or adds an additional `callbac
 **Parameters**
 
 - **element** `HTMLElement` - An element which size changes we want to observe.
-- **callback** `function` - A function that will be called whenever the size of the element changes. It is called with [`ResizeObserverEntry`] object for the given element.
+- **callback** `function` - A function that will be called whenever the size of the element changes. It is called with [`ResizeObserverEntry`][resize-observer-entry] object for the given element.
 
 #### `unobserve(element [, callback ])`
 
@@ -48,7 +54,7 @@ Unobserve all observed elements.
 
 ### Example
 
-Here is a simplified example of [`{{on-resize}}`](https://github.com/PrecisionNutrition/ember-on-resize-modifier) modifier using the `ResizeObserverService`:
+Here is a simplified example of [`{{on-resize}}`][on-resize-modifier] modifier using the `ResizeObserverService`:
 
 ```hbs
 <div {{on-resize @onResize}}>
@@ -94,6 +100,8 @@ See the [Contributing](CONTRIBUTING.md) guide for details.
 
 This project is licensed under the [MIT License](LICENSE.md).
 
-[`ResizeObserver`]: https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver
-[ResizeObserver API]: https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver
-[`ResizeObserverEntry`]: https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry
+[resize-observer]: https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver
+[resize-observer-entry]: https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry
+[on-resize-modifier]: https://github.com/PrecisionNutrition/ember-on-resize-modifier
+[performance-penalty]: https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/z6ienONUb5A/F5-VcUZtBAAJ
+[polyfill]: https://github.com/PrecisionNutrition/ember-resize-observer-polyfill
