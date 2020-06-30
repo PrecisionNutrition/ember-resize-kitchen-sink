@@ -71,9 +71,11 @@ In the example below, `large` is a matcher name, and `(hash width-gte=1200)` rep
 </ResizeObserver>
 ```
 
-**All operators with a single value (available options are `eq`, `gt`, `gte`, `lt`, `lte`)**
+**Available operators:** `eq`, `gt`, `gte`, `lt`, `lte` (they are similar to [ember-truth-helpers][])
 
-They are similar to [ember-truth-helpers][]:
+**Available conditions:** `width`, `height`, `aspectRatio`.
+
+**Note:** The addon protects you from mistyping by validating all your matchers and telling you exactly what was wrong with a particular matcher.
 
 | Query                 | JavaScript     |
 | --------------------- | -------------- |
@@ -83,11 +85,11 @@ They are similar to [ember-truth-helpers][]:
 | `(hash width-lt=10)`  | `width < 10`   |
 | `(hash width-lte=10)` | `width <= 10`  |
 
-**With multiple values (available values are `width`, `height`, and `aspectRatio`):**
+**Examples with multiple values:**
 
 | Query                              | JavaScript                        |
 | ---------------------------------- | --------------------------------- |
-| `(hash width=10 height-lt=20)`     | `width === 10 && height < 10`     |
+| `(hash width=10 height-lt=20)`     | `width === 10 && height < 20`     |
 | `(hash width-gt=10 aspectRatio=1)` | `width > 10 && aspectRatio === 1` |
 
 **In `no-wrapper` mode, the component won't provide a wrapper element, so you will need to attach `onResize` handler to a target element yourself:**
