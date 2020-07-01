@@ -1,5 +1,15 @@
 # ember-resize-observer-component
 
+<p>
+  <a href="https://github.com/PrecisionNutrition/ember-resize-observer-component/actions?query=workflow%3ACI" target="_blank" rel="noopener noreferrer">
+    <img src="https://github.com/PrecisionNutrition/ember-resize-observer-component/workflows/CI/badge.svg" alt="CI status">
+  </a>
+
+  <a href="https://www.npmjs.com/package/ember-resize-observer-component" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/npm/v/ember-resize-observer-component?color=informational" alt="NPM version" />
+  </a>
+</p>
+
 A tiny, [ResizeObserver-based][resize-observer] solution for building components responsive to their container size, rather than the viewport. The idea is to overcome the limitations of viewport-based media queries, and it's known as `Container Queries`.
 
 Here is how it can be done, using this addon (controversial example):
