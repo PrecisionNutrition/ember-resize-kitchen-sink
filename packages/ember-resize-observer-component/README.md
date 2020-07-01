@@ -56,7 +56,7 @@ This addon focuses on simplicity. It only includes a single component and won't 
 ember install ember-resize-observer-component
 ```
 
-If you need a [ResizeObserver polyfill][resize-observer-polyfill] ([caniuse.com](https://caniuse.com/#feat=resizeobserver)):
+If you need a [ResizeObserver polyfill][resize-observer-polyfill] ([caniuse.com][caniuse]):
 
 ```
 ember install ember-resize-observer-polyfill
@@ -150,9 +150,10 @@ See the [Contributing](CONTRIBUTING.md) guide for details.
 
 ## Compatibility
 
-- Ember.js v3.12 or above
+- Ember.js v3.14 or above
 - Ember CLI v2.13 or above
 - Node.js v10 or above
+- [Modern browsers][caniuse] (for IE 11 install [polyfill][resize-observer-polyfill])
 
 ## License
 
@@ -163,3 +164,4 @@ This project is licensed under the [MIT License](LICENSE.md).
 [on-resize-modifier]: https://github.com/PrecisionNutrition/ember-on-resize-modifier
 [resize-observer-polyfill]: https://github.com/PrecisionNutrition/ember-resize-observer-polyfill
 [ember-truth-helpers]: https://github.com/jmurphyau/ember-truth-helpers
+[caniuse]: https://caniuse.com/#feat=resizeobserver

@@ -50,6 +50,7 @@ jobs:
       matrix:
         ember-try-scenario:
           [
+            ember-3.14,
             ember-lts-3.16,
             ember-release,
             ember-beta,
