@@ -8,6 +8,10 @@ import { delay, setSize } from '../../utils';
 module('Integration | Modifier | on-resize', function (hooks) {
   setupRenderingTest(hooks);
 
+  hooks.beforeEach(function () {
+    sinon.stub(window, 'requestAnimationFrame').callsFake(callback => callback());
+  });
+
   test('it works', async function (assert) {
     this.onResize = sinon.spy().named('onResize');
 
@@ -59,19 +63,6 @@ module('Integration | Modifier | on-resize', function (hooks) {
     await setSize(element, { width: 50 });
 
     assert.spy(this.onResize).notCalled('did not call onResize when size is not changed');
-  });
-
-  test('prevents ResizeObserver loop limit related errors', async function (assert) {
-    assert.expect(0);
-    this.onResize = () => this.set('showText', true);
-
-    await render(hbs`
-      <div {{on-resize this.onResize}}>
-        {{if this.showText "Trigger ResizeObserver again"}}
-      </div>
-    `);
-
-    delay();
   });
 
   test('using multiple modifiers for the same element', async function (assert) {
@@ -149,5 +140,19 @@ module('Integration | Modifier | on-resize', function (hooks) {
 
     assert.spy(callback1).notCalled();
     assert.spy(callback2).calledOnce();
+  });
+
+  test('prevents ResizeObserver loop limit related errors', async function (assert) {
+    assert.expect(0);
+    window.requestAnimationFrame.restore();
+    this.onResize = () => this.set('showText', true);
+
+    await render(hbs`
+      <div {{on-resize this.onResize}}>
+        {{if this.showText "Trigger ResizeObserver again"}}
+      </div>
+    `);
+
+    delay();
   });
 });
