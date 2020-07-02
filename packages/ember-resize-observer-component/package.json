@@ -1,6 +1,6 @@
 {
   "name": "ember-resize-observer-component",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Build components responsive to their container size rather than the viewport.",
   "keywords": [
     "ember-addon"
