@@ -60,7 +60,10 @@ module('Unit | Service | resize-observer', function (hooks) {
       observeSpy.reset();
       service.observe(element, newCallback);
 
-      assert.ok(service.callbacks.get(element).has(callback), 'still has the existing callback');
+      assert.ok(
+        service.callbacks.get(element).has(callback),
+        'still has the existing callback'
+      );
       assert.ok(service.callbacks.get(element).has(newCallback), 'added a new callback');
       assert.spy(observeSpy).notCalled();
     });
@@ -91,7 +94,11 @@ module('Unit | Service | resize-observer', function (hooks) {
 
       service.observe(element, callback);
 
-      assert.equal(service.callbacks.get(element).size, 1, 'has an element with a single callback');
+      assert.equal(
+        service.callbacks.get(element).size,
+        1,
+        'has an element with a single callback'
+      );
 
       service.unobserve(element, callback);
 
@@ -106,13 +113,22 @@ module('Unit | Service | resize-observer', function (hooks) {
       service.observe(element, callback);
       service.observe(element, targetCallback);
 
-      assert.ok(service.callbacks.get(element).has(targetCallback), 'has a target callback');
-      assert.ok(service.callbacks.get(element).has(callback), 'has a non-target callback');
+      assert.ok(
+        service.callbacks.get(element).has(targetCallback),
+        'has a target callback'
+      );
+      assert.ok(
+        service.callbacks.get(element).has(callback),
+        'has a non-target callback'
+      );
 
       service.unobserve(element, targetCallback);
 
       assert.ok(service.callbacks.has(element), 'did not remove the element');
-      assert.notOk(service.callbacks.get(element).has(targetCallback), 'removed a target callback');
+      assert.notOk(
+        service.callbacks.get(element).has(targetCallback),
+        'removed a target callback'
+      );
       assert.ok(
         service.callbacks.get(element).has(callback),
         'did not remove a non-target callback'
@@ -126,7 +142,11 @@ module('Unit | Service | resize-observer', function (hooks) {
       service.observe(element, () => null);
       service.observe(element, () => null);
 
-      assert.equal(service.callbacks.get(element).size, 2, 'has an element with two callbacks');
+      assert.equal(
+        service.callbacks.get(element).size,
+        2,
+        'has an element with two callbacks'
+      );
 
       service.unobserve(element);
 
@@ -139,7 +159,10 @@ module('Unit | Service | resize-observer', function (hooks) {
 
       service.observe(element, callback);
 
-      assert.ok(service.callbacks.get(element).has(callback), 'has an element with a callback');
+      assert.ok(
+        service.callbacks.get(element).has(callback),
+        'has an element with a callback'
+      );
 
       sinon.stub(service, 'isEnabled').get(() => false);
       service.unobserve(element, callback);
@@ -157,7 +180,10 @@ module('Unit | Service | resize-observer', function (hooks) {
 
       service.observe(element, callback);
 
-      assert.ok(service.callbacks.get(element).has(callback), 'has an element with a callback');
+      assert.ok(
+        service.callbacks.get(element).has(callback),
+        'has an element with a callback'
+      );
 
       service.unobserve(wrongElement, callback);
 
@@ -222,13 +248,19 @@ module('Unit | Service | resize-observer', function (hooks) {
       service.observe(banner, banner.callbacks[1]);
 
       const modal = document.createElement('div');
-      modal.callbacks = [sinon.spy().named('modalCallback1'), sinon.spy().named('modalCallback2')];
+      modal.callbacks = [
+        sinon.spy().named('modalCallback1'),
+        sinon.spy().named('modalCallback2'),
+      ];
 
       service.observe(modal, modal.callbacks[0]);
       service.observe(modal, modal.callbacks[1]);
 
       const form = document.createElement('div');
-      form.callbacks = [sinon.spy().named('formCallback1'), sinon.spy().named('formCallback2')];
+      form.callbacks = [
+        sinon.spy().named('formCallback1'),
+        sinon.spy().named('formCallback2'),
+      ];
 
       service.observe(form, form.callbacks[0]);
       service.observe(form, form.callbacks[1]);
