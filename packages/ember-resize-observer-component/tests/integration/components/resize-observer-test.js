@@ -348,6 +348,18 @@ module('Integration | Component | resize-observer', function (hooks) {
     assert.dom('[data-test-dimensions]').hasText('100 100 1');
   });
 
+  test('prevents ResizeObserver loop limit related errors', async function (assert) {
+    assert.expect(0);
+
+    await render(hbs`
+      <ResizeObserver as |RO|>
+        {{if RO.width "Trigger ResizeObserver again"}}
+      </ResizeObserver>
+    `);
+
+    await delay();
+  });
+
   module('matchers validation errors', function (hooks) {
     hooks.afterEach(function () {
       resetOnerror();
