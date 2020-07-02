@@ -17,6 +17,7 @@ export default class ResizeObserverService extends Service {
   setup() {
     this.callbacks = null;
     this.observer = null;
+    this.rafID = null;
 
     if (typeof FastBoot !== 'undefined' || typeof window === 'undefined') {
       return;
@@ -100,20 +101,27 @@ export default class ResizeObserverService extends Service {
       return;
     }
 
+    window.cancelAnimationFrame(this.rafID);
     this.callbacks = new WeakMap();
     this.observer.disconnect();
   }
 
+  willDestroy() {
+    this.clear();
+  }
+
   @action
   handleResize(entries) {
-    for (const entry of entries) {
-      const callbacks = this.callbacks.get(entry.target);
+    this.rafID = requestAnimationFrame(() => {
+      for (const entry of entries) {
+        const callbacks = this.callbacks.get(entry.target);
 
-      if (callbacks) {
-        for (const callback of callbacks) {
-          callback(entry);
+        if (callbacks) {
+          for (const callback of callbacks) {
+            callback(entry);
+          }
         }
       }
-    }
+    });
   }
 }

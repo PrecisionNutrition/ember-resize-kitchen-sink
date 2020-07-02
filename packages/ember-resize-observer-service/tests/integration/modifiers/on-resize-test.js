@@ -55,6 +55,19 @@ module('Integration | Modifier | on-resize', function (hooks) {
     assert.spy(this.onResize).notCalled('did not call onResize when size is not changed');
   });
 
+  test('prevents ResizeObserver loop limit related errors', async function (assert) {
+    assert.expect(0);
+    this.onResize = () => this.set('showText', true);
+
+    await render(hbs`
+      <div {{on-resize this.onResize}}>
+        {{if this.showText "Trigger ResizeObserver again"}}
+      </div>
+    `);
+
+    delay();
+  });
+
   test('using multiple modifiers for the same element', async function (assert) {
     const callback1 = sinon.spy().named('callback1');
     const callback2 = sinon.spy().named('callback2');
