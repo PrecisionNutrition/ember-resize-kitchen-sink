@@ -202,16 +202,6 @@ module('Unit | Service | resize-observer', function (hooks) {
       this.disconnectSpy = sinon.stub(this.service.observer, 'disconnect');
     });
 
-    test('cancels animation frame', function (assert) {
-      const { service } = this;
-      const cancelAFSpy = sinon.stub(window, 'cancelAnimationFrame');
-
-      sinon.stub(this.service, 'rafID').value(123);
-      service.clear();
-
-      assert.spy(cancelAFSpy).calledOnce().calledWithExactly([123]);
-    });
-
     test('resets callbacks map and unobserve all elements', function (assert) {
       const { service, serviceCallbacks, disconnectSpy } = this;
 
@@ -236,7 +226,6 @@ module('Unit | Service | resize-observer', function (hooks) {
     hooks.beforeEach(function () {
       const service = this.owner.lookup('service:resize-observer');
       sinon.stub(service.observer, 'observe');
-      sinon.stub(window, 'requestAnimationFrame').callsFake(callback => callback());
 
       const banner = document.createElement('div');
       banner.callbacks = [

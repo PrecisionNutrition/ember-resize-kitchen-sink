@@ -1,6 +1,7 @@
 import Service from '@ember/service';
 import { action } from '@ember/object';
 import { warn } from '@ember/debug';
+import ignoreROError from '../utils/ignore-ro-error';
 
 const addonName = 'resize-observer-service';
 
@@ -17,7 +18,6 @@ export default class ResizeObserverService extends Service {
   setup() {
     this.callbacks = null;
     this.observer = null;
-    this.rafID = null;
 
     if (typeof FastBoot !== 'undefined' || typeof window === 'undefined') {
       return;
@@ -28,6 +28,7 @@ export default class ResizeObserverService extends Service {
       return;
     }
 
+    ignoreROError();
     this.callbacks = new WeakMap();
     this.observer = new window.ResizeObserver(this.handleResize);
   }
@@ -101,7 +102,6 @@ export default class ResizeObserverService extends Service {
       return;
     }
 
-    window.cancelAnimationFrame(this.rafID);
     this.callbacks = new WeakMap();
     this.observer.disconnect();
   }
@@ -112,16 +112,14 @@ export default class ResizeObserverService extends Service {
 
   @action
   handleResize(entries) {
-    this.rafID = requestAnimationFrame(() => {
-      for (const entry of entries) {
-        const callbacks = this.callbacks.get(entry.target);
+    for (const entry of entries) {
+      const callbacks = this.callbacks.get(entry.target);
 
-        if (callbacks) {
-          for (const callback of callbacks) {
-            callback(entry);
-          }
+      if (callbacks) {
+        for (const callback of callbacks) {
+          callback(entry);
         }
       }
-    });
+    }
   }
 }

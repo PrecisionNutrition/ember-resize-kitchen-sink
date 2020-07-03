@@ -15,5 +15,5 @@ export function setSize(el, { width, height }) {
     el.style.height = `${height}px`;
   }
 
-  return delay(50);
+  return delay(60);
 }

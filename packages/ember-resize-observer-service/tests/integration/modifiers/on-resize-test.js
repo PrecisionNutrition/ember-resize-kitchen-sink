@@ -8,10 +8,6 @@ import { delay, setSize } from '../../utils';
 module('Integration | Modifier | on-resize', function (hooks) {
   setupRenderingTest(hooks);
 
-  hooks.beforeEach(function () {
-    sinon.stub(window, 'requestAnimationFrame').callsFake(callback => callback());
-  });
-
   test('it works', async function (assert) {
     this.onResize = sinon.spy().named('onResize');
 
@@ -142,9 +138,8 @@ module('Integration | Modifier | on-resize', function (hooks) {
     assert.spy(callback2).calledOnce();
   });
 
-  test('prevents ResizeObserver loop limit related errors', async function (assert) {
+  test('prevents "ResizeObserver loop limit exceeded" error', async function (assert) {
     assert.expect(0);
-    window.requestAnimationFrame.restore();
     this.onResize = () => this.set('showText', true);
 
     await render(hbs`
