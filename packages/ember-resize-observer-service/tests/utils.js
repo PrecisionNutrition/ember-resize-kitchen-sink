@@ -1,7 +1,7 @@
 import { later } from '@ember/runloop';
 
 export function delay(ms = 50) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     later(resolve, ms);
   });
 }

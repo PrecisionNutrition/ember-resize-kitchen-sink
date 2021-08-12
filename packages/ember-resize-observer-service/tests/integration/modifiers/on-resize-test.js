@@ -29,9 +29,7 @@ module('Integration | Modifier | on-resize', function (hooks) {
       .calledOnce('called onResize on insert')
       .calledWithExactly([sinon.match.instanceOf(ResizeObserverEntry)])
       .calledWithExactly([sinon.match({ target: element })])
-      .calledWithExactly([
-        sinon.match({ contentRect: sinon.match({ height: 100, width: 100 }) }),
-      ]);
+      .calledWithExactly([sinon.match({ contentRect: sinon.match({ height: 100, width: 100 }) })]);
 
     this.onResize.resetHistory();
     await setSize(element, { width: 50 });
@@ -40,9 +38,7 @@ module('Integration | Modifier | on-resize', function (hooks) {
       .spy(this.onResize)
       .calledOnce('called onResize on width change')
       .calledWithExactly([sinon.match({ target: element })])
-      .calledWithExactly([
-        sinon.match({ contentRect: sinon.match({ height: 100, width: 50 }) }),
-      ]);
+      .calledWithExactly([sinon.match({ contentRect: sinon.match({ height: 100, width: 50 }) })]);
 
     this.onResize.resetHistory();
     await setSize(element, { height: 50 });
@@ -51,9 +47,7 @@ module('Integration | Modifier | on-resize', function (hooks) {
       .spy(this.onResize)
       .calledOnce('called onResize on height change')
       .calledWithExactly([sinon.match({ target: element })])
-      .calledWithExactly([
-        sinon.match({ contentRect: sinon.match({ height: 50, width: 50 }) }),
-      ]);
+      .calledWithExactly([sinon.match({ contentRect: sinon.match({ height: 50, width: 50 }) })]);
 
     this.onResize.resetHistory();
     await setSize(element, { width: 50 });

@@ -35,6 +35,7 @@
     "@embroider/test-setup": "^0.41.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
+    "@precision-nutrition/prettier-config": "^1.1.0",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^1.11.3",
@@ -73,13 +74,14 @@
     "qunit-dom": "^1.6.0",
     "qunit-sinon-assertions": "^0.0.3"
   },
+  "prettier": "@precision-nutrition/prettier-config",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.{js,css,yml,md}": "prettier --write",
+    "*.{js,css,html,md,yml}": "prettier --write",
     "*.js": "eslint --fix",
     "*.hbs": "ember-template-lint"
   },
