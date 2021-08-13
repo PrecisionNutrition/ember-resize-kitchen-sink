@@ -334,7 +334,7 @@ module('Integration | Component | resize-observer', function (hooks) {
     await render(hbs`
       <ResizeObserver
         style="width: 100px; height: 100px;"
-        @matchers={{(hash)}}
+        @matchers={{hash}}
         as |RO|
       >
         <p data-test-dimensions>
