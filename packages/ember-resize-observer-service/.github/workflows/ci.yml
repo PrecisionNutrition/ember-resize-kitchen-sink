@@ -167,7 +167,7 @@ jobs:
       fail-fast: true
       matrix:
         ember-try-scenario:
-          [ember-lts-3.12, ember-lts-3.16, ember-release, ember-beta, ember-canary]
+          [ember-lts-3.20, ember-lts-3.24, ember-release, ember-beta, ember-canary]
 
     steps:
       - uses: actions/checkout@v2
