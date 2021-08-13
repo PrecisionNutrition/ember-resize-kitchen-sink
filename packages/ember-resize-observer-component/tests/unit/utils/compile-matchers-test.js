@@ -119,19 +119,19 @@ module('Unit | Utility | compile-matchers', function () {
         queryToConditions({ 'width-gte': 100, 'width-lte': 110, 'height-lt': 500 })
       );
 
-      assert.equal(match({ width: 100, height: 499 }), true);
-      assert.equal(match({ width: 110, height: 0 }), true);
-      assert.equal(match({ width: 100, height: 500 }), false);
-      assert.equal(match({ width: 111, height: 499 }), false);
-      assert.equal(match({ width: 100 }), false);
+      assert.true(match({ width: 100, height: 499 }));
+      assert.true(match({ width: 110, height: 0 }));
+      assert.false(match({ width: 100, height: 500 }));
+      assert.false(match({ width: 111, height: 499 }));
+      assert.false(match({ width: 100 }));
     });
 
     test('match function built with an empty query always returns true', function (assert) {
       const match = conditionsToFunction(queryToConditions({}));
 
-      assert.equal(match({ width: 100, height: 499 }), true);
-      assert.equal(match({ width: 111, height: 499 }), true);
-      assert.equal(match({ width: 100 }), true);
+      assert.true(match({ width: 100, height: 499 }));
+      assert.true(match({ width: 111, height: 499 }));
+      assert.true(match({ width: 100 }));
     });
   });
 

@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import compileMatchers from '../utils/compile-matchers';
 
@@ -29,7 +29,6 @@ export default class ResizeObserverComponent extends Component {
     return this.width / this.height || 0;
   }
 
-  @computed('args.matchers')
   get matchers() {
     const { matchers } = this.args;
     return matchers ? compileMatchers(matchers) : [];
