@@ -10,12 +10,12 @@ const addonName = 'resize-observer-service';
  * for observing multiple elements to achieve better performance.
  */
 export default class ResizeObserverService extends Service {
-  init(...args) {
-    super.init(...args);
-    this.setup();
+  constructor() {
+    super(...arguments);
+    this._setup();
   }
 
-  setup() {
+  _setup() {
     this.callbacks = null;
     this.observer = null;
 
