@@ -5,11 +5,12 @@ import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';
 import { start } from 'ember-qunit';
 import setupSinon from 'ember-sinon-qunit';
-import 'qunit-sinon-assertions';
+import setupAssertSinon from 'qunit-sinon-assertions';
 
 setApplication(Application.create(config.APP));
 
 setupSinon();
 setup(QUnit.assert);
+setupAssertSinon(QUnit.assert);
 
 start();
