@@ -22,8 +22,8 @@ Here is how it can be done, using this addon (controversial example):
   }}
   as |RO|
 >
-  <p class="matchers {{if RO.is.bigSquare "matchers--square"}}">
-    {{if RO.is.width-between-100-300 "Width is between 100px-300px"}}
+  <p class='matchers {{if RO.is.bigSquare 'matchers--square'}}'>
+    {{if RO.is.width-between-100-300 'Width is between 100px-300px'}}
   </p>
 
   {{#if RO.is.bigSquare}}
@@ -71,12 +71,7 @@ Matchers allow you to map size-related conditions, such as `width > 100`, to pro
 In the example below, `large` is a matcher name, and `(hash width-gte=1200)` represents a condition query.
 
 ```hbs
-<ResizeObserver
-  @matchers={{hash
-    large=(hash width-gte=1200)
-  }}
-  as |RO|
->
+<ResizeObserver @matchers={{hash large=(hash width-gte=1200)}} as |RO|>
   {{if RO.is.large "I'm large!"}}
 </ResizeObserver>
 ```
@@ -107,7 +102,9 @@ In the example below, `large` is a matcher name, and `(hash width-gte=1200)` rep
 ```hbs
 <ResizeObserver @noWrapper={{true}} as |RO|>
   <div {{on-resize RO.onResize}}>
-    {{RO.width}} {{RO.height}} {{RO.aspectRatio}}
+    {{RO.width}}
+    {{RO.height}}
+    {{RO.aspectRatio}}
   </div>
 </ResizeObserver>
 ```
@@ -116,18 +113,18 @@ In the example below, `large` is a matcher name, and `(hash width-gte=1200)` rep
 
 ```hbs
 <ResizeObserver
-  @matchers={{hash
-    large=(hash width-gte=1200)
-    square=(hash aspectRatio=1)
-  }}
+  @matchers={{hash large=(hash width-gte=1200) square=(hash aspectRatio=1)}}
   @defaultWidth={{100}}
   @defaultHeight={{100}}
   as |RO|
 >
-  {{if RO.is.large "Large"}}
-  {{if RO.is.square "Square"}}
+  {{if RO.is.large 'Large'}}
+  {{if RO.is.square 'Square'}}
 
-  Size: {{RO.width}} x {{RO.height}}
+  Size:
+  {{RO.width}}
+  x
+  {{RO.height}}
 </ResizeObserver>
 ```
 
@@ -150,9 +147,9 @@ See the [Contributing](CONTRIBUTING.md) guide for details.
 
 ## Compatibility
 
-- Ember.js v3.14 or above
-- Ember CLI v2.13 or above
-- Node.js v10 or above
+* Ember.js v3.20 or above
+* Ember CLI v3.20 or above
+* Node.js v12 or above
 - [Modern browsers][caniuse] (for IE 11 install [polyfill][resize-observer-polyfill])
 
 ## License
