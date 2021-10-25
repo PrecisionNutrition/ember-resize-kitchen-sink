@@ -5,7 +5,7 @@
   "keywords": [
     "ember-addon"
   ],
-  "repository": "https://github.com/PrecisionNutrition/ember-on-resize-modifier",
+  "repository": "https://github.com/PrecisionNutrition/ember-on-resize-kitchen-sink/ember-on-resize-modifier",
   "license": "MIT",
   "author": "Ivan Votti <ivanvotti@gmail.com>",
   "directories": {
