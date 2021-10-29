@@ -7,10 +7,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:PrecisionNutrition/ember-resize-kitchen-sink.git"
+    "url": "https://github.com/PrecisionNutrition/ember-resize-kitchen-sink/tree/main/packages/ember-on-resize-modifier"
   },
   "license": "MIT",
-  "author": "Ivan Votti <ivanvotti@gmail.com>",
+  "author": "Precision Nutrition Team",
   "directories": {
     "doc": "doc",
     "test": "tests"

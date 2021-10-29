@@ -121,6 +121,6 @@ This project is licensed under the [MIT License](LICENSE.md).
 [resize-observer-entry]: https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry
 [performance-penalty]: https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/z6ienONUb5A/F5-VcUZtBAAJ
 [caniuse]: https://caniuse.com/#feat=resizeobserver
-[resize-observer-component]: https://github.com/PrecisionNutrition/ember-resize-observer-component
-[on-resize-modifier]: https://github.com/PrecisionNutrition/ember-on-resize-modifier
+[resize-observer-component]: https://github.com/PrecisionNutrition/ember-resize-kitchen-sink/tree/main/packages/ember-resize-observer-component
+[on-resize-modifier]: https://github.com/PrecisionNutrition/ember-resize-kitchen-sink/tree/main/packages/ember-on-resize-modifier
 [resize-observer-polyfill]: https://github.com/PrecisionNutrition/ember-resize-observer-polyfill

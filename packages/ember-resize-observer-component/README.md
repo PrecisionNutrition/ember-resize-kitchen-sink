@@ -157,8 +157,8 @@ See the [Contributing](CONTRIBUTING.md) guide for details.
 This project is licensed under the [MIT License](LICENSE.md).
 
 [resize-observer]: https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver
-[resize-observer-service]: https://github.com/PrecisionNutrition/ember-resize-observer-service
-[on-resize-modifier]: https://github.com/PrecisionNutrition/ember-on-resize-modifier
+[resize-observer-service]: https://github.com/PrecisionNutrition/ember-resize-kitchen-sink/tree/main/packages/ember-resize-observer-service
+[on-resize-modifier]: https://github.com/PrecisionNutrition/ember-resize-kitchen-sink/tree/main/packages/ember-on-resize-modifier
 [resize-observer-polyfill]: https://github.com/PrecisionNutrition/ember-resize-observer-polyfill
 [ember-truth-helpers]: https://github.com/jmurphyau/ember-truth-helpers
 [caniuse]: https://caniuse.com/#feat=resizeobserver
