@@ -331,10 +331,12 @@ module('Integration | Component | resize-observer', function (hooks) {
   });
 
   test('renders when @matchers is set to an empty object', async function (assert) {
+    this.matchers = {};
+
     await render(hbs`
       <ResizeObserver
         style="width: 100px; height: 100px;"
-        @matchers={{hash}}
+        @matchers={{this.matchers}}
         as |RO|
       >
         <p data-test-dimensions>
