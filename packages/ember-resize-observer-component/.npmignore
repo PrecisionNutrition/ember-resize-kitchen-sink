@@ -24,6 +24,7 @@
 /config/ember-try.js
 /CONTRIBUTING.md
 /ember-cli-build.js
+/jsonconfig.json
 /testem.js
 /tests/
 /yarn-error.log
