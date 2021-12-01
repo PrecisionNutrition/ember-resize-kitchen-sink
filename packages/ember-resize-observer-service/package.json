@@ -1,6 +1,6 @@
 {
   "name": "ember-resize-observer-service",
-  "version": "0.4.5",
+  "version": "1.0.0-alpha.0",
   "description": "Use a single ResizeObserver instance for better performance.",
   "keywords": [
     "ember-addon"
