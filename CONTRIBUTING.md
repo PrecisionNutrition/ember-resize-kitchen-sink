@@ -19,7 +19,7 @@ Note that this package is organized as a monorepo for ease of development.
   for all members of this monorepo.
 - `cd <package>; ember test --server` – Runs the test suite in "watch mode" for
   a given package
-- `lerna run test:ember-compatibility – Runs the test suite against multiple
+- `lerna run test:ember-compatibility` – Runs the test suite against multiple
   Ember versions for all members of this monorepo.
 
 ## Running the dummy application
