@@ -1,6 +1,6 @@
 {
   "name": "ember-on-resize-modifier",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Modifier relying on a single ResizeObserver instance for better performance.",
   "keywords": [
     "ember-addon"
@@ -43,7 +43,7 @@
     "ember-cli-babel": "^7.26.6",
     "ember-cli-htmlbars": "^5.7.1",
     "ember-modifier": "^3.2.7",
-    "ember-resize-observer-service": "^1.0.0"
+    "ember-resize-observer-service": "^1.1.0"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
