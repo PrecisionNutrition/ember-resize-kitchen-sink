@@ -1,32 +1,32 @@
 import Modifier from 'ember-modifier';
 import { inject as service } from '@ember/service';
-import { action } from '@ember/object';
 import { assert } from '@ember/debug';
+import { registerDestructor } from '@ember/destroyable';
 
 export default class OnResizeModifier extends Modifier {
   @service resizeObserver;
 
-  get callback() {
-    return this.args.positional[0];
+  callback = null;
+  element = null;
+
+  constructor() {
+    super(...arguments);
+
+    registerDestructor(this, () => {
+      this.resizeObserver.unobserve(this.element, this.callback);
+    });
   }
 
-  didReceiveArguments() {
+  modify(element, [callback]) {
     assert(
-      `on-resize-modifier: callback must be a function, but was ${this.callback}`,
-      typeof this.callback === 'function'
+      `on-resize-modifier: callback must be a function, but was ${callback}`,
+      typeof callback === 'function'
     );
-  }
 
-  didInstall() {
-    this.resizeObserver.observe(this.element, this.handleResize);
-  }
+    this.resizeObserver.observe(element, callback);
+    this.resizeObserver.unobserve(this.element, this.callback);
 
-  willRemove() {
-    this.resizeObserver.unobserve(this.element, this.handleResize);
-  }
-
-  @action
-  handleResize(...args) {
-    this.callback(...args);
+    this.callback = callback;
+    this.element = element;
   }
 }
