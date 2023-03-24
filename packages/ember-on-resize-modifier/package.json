@@ -1,6 +1,6 @@
 {
   "name": "ember-on-resize-modifier",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Modifier relying on a single ResizeObserver instance for better performance.",
   "keywords": [
     "ember-addon"
@@ -121,5 +121,6 @@
   "volta": {
     "node": "12.18.0",
     "yarn": "1.22.4"
-  }
+  },
+  "gitHead": "ce70b2550d8869037e0747555bcc8a49b5277ace"
 }
